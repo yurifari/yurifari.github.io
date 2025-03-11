@@ -1,29 +1,872 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Coming Soon</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-  <meta name="robots" content="noindex, follow">
-</head>
-<body>
-	<div class="bg-img1 size1 overlay1 p-b-35 p-l-15 p-r-15" style="background-image: url('images/bg.jpg');">
-		<div class="flex-col-c p-t-160 p-b-215 respon1">
-			<h1 class="l1-txt1 txt-center p-t-10 p-b-50 font-weight-bold">Y</h1>
-			<h2 class="l1-txt1 txt-center p-t-30 p-b-50">
-				Coming Soon
-			</h2>
-			<div class="cd50"></div>
-		</div>
-		<div class="flex-w flex-c-m p-b-35">
-			<a href="https://www.facebook.com/yurfar" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
-				<i class="fa fa-facebook"></i>
-			</a>
-		</div>
-	</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yuri Farina | Software Engineering Solutions</title>
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+      }
+
+      a {
+        text-decoration: none;
+        color: #0366d6;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Layout */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background-color: #1a202c;
+        color: white;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        font-weight: 500;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 0;
+        background: linear-gradient(120deg, #1a202c, #2d3748);
+        background-image: url(/images/bg.jpg);
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: #7579ff;
+        background: linear-gradient(top, #b224ef, #7579ff);
+        opacity: 0.9;
+      }
+
+      .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .hero-text {
+        flex: 1;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .hero-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #0366d6;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0255b8;
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid white;
+        margin-left: 15px;
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Services Section */
+      .services {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 60px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .service-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 40px 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: #0366d6;
+        margin-bottom: 20px;
+      }
+
+      .service-card h3 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      .service-card p {
+        color: #555;
+      }
+
+      /* Expertise Section */
+      .expertise {
+        padding: 100px 0;
+        background-color: #f0f5fa;
+      }
+
+      .expertise-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .expertise-text {
+        flex: 1;
+      }
+
+      .expertise-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #1a202c;
+      }
+
+      .expertise-text p {
+        margin-bottom: 20px;
+        color: #555;
+      }
+
+      .expertise-skills {
+        flex: 1;
+      }
+
+      .expertise-skill {
+        margin-bottom: 25px;
+      }
+
+      .expertise-skill h4 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .skill-bar {
+        height: 10px;
+        background-color: #e2e8f0;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background-color: #0366d6;
+        border-radius: 5px;
+      }
+
+      .tag {
+        background-color: #e1ecf4;
+        color: #0366d6;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+      }
+
+      /* Process Section */
+      .process {
+        padding: 100px 0;
+        background-color: #f0f5fa;
+      }
+
+      .process-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+        position: relative;
+      }
+
+      .process-steps:before {
+        content: "";
+        position: absolute;
+        top: 40px;
+        left: 60px;
+        right: 60px;
+        height: 2px;
+        background-color: #cbd5e0;
+        z-index: 0;
+      }
+
+      .process-step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        width: 200px;
+      }
+
+      .step-number {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #0366d6;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0 auto 20px;
+      }
+
+      .process-step h3 {
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .process-step p {
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      .author-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+
+      .author-info h4 {
+        margin-bottom: 5px;
+      }
+
+      .author-info p {
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 100px 0;
+        background-color: #1a202c;
+        color: white;
+      }
+
+      .contact .section-title,
+      .contact .section-subtitle {
+        color: white;
+      }
+
+      .contact .section-subtitle {
+        color: #cbd5e0;
+      }
+
+      .contact-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-info p {
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        color: #a0aec0;
+      }
+
+      .contact-methods {
+        list-style: none;
+      }
+
+      .contact-methods li {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-methods li i {
+        margin-right: 15px;
+        color: #0366d6;
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        flex: 1;
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        color: #333;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #0366d6;
+        box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.2);
+      }
+
+      /* Footer */
+      footer {
+        background-color: #111827;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .footer-info {
+        flex: 2;
+        padding-right: 40px;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .footer-info p {
+        color: #a0aec0;
+        margin-bottom: 20px;
+      }
+
+      .footer-nav {
+        flex: 1;
+      }
+
+      .footer-nav h4 {
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-bottom {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #2d3748;
+        text-align: center;
+        color: #a0aec0;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .hero-content {
+          flex-direction: column;
+        }
+
+        .expertise-content {
+          flex-direction: column;
+        }
+
+        .process-steps {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .process-steps:before {
+          display: none;
+        }
+
+        .process-step {
+          margin-bottom: 40px;
+        }
+
+        .contact-content {
+          flex-direction: column;
+        }
+
+        .footer-content {
+          flex-direction: column;
+        }
+
+        .footer-info {
+          margin-bottom: 40px;
+          padding-right: 0;
+        }
+
+        .footer-nav {
+          margin-bottom: 30px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .case-studies-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      ;(function () {
+        emailjs.init({
+          publicKey: "0Sakl3KfOTPqVsy9i",
+        })
+      })()
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        const form = document.getElementById("contact-form")
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault()
+
+          const fields = form.querySelectorAll("input, textarea, button")
+          const button = form.querySelector("button")
+
+          fields.forEach((field) => (field.disabled = true))
+          button.textContent = "Sending..."
+
+          emailjs
+            .sendForm("service_nmxqpzn", "template_o84eo9v", this)
+            .then(() => {
+              button.textContent = "Thank you!"
+
+              setTimeout(() => {
+                fields.forEach((field) => (field.disabled = false))
+                button.textContent = "Send Message"
+                this.reset()
+              }, 3000)
+            })
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Yuri Farina</div>
+          <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Custom Software Solutions for Your Business Needs</h1>
+            <p>
+              I help businesses transform their ideas into powerful software
+              applications that drive growth and efficiency.
+            </p>
+            <a href="#contact" class="btn">Schedule Consultation</a>
+          </div>
+          <div class="hero-image"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Services Offered</h2>
+        <p class="section-subtitle">
+          I deliver end-to-end software engineering services tailored to your
+          specific business requirements
+        </p>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Custom Software Development</h3>
+            <p>
+              Bespoke applications built from the ground up to address your
+              unique business challenges and requirements.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Web Application Development</h3>
+            <p>
+              Responsive, scalable web applications with intuitive interfaces
+              and robust backend functionality.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Mobile Solutions</h3>
+            <p>
+              Cross-platform mobile applications that deliver seamless
+              experiences across iOS and Android devices.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>API Development & Integration</h3>
+            <p>
+              Secure, well-documented APIs that connect your systems and enable
+              smooth data flow between applications.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>Code Audit & Optimization</h3>
+            <p>
+              Comprehensive code review and optimization to improve performance,
+              security, and maintainability.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🔄</div>
+            <h3>Legacy System Modernization</h3>
+            <p>
+              Updating and refactoring outdated systems to leverage modern
+              technologies and improve business outcomes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+      <div class="container">
+        <h2 class="section-title">Technical Expertise</h2>
+        <p class="section-subtitle">
+          Specialized skills and technologies to deliver high-quality solutions
+        </p>
+
+        <div class="expertise-content">
+          <div class="expertise-text">
+            <h3>Why Choose My Services?</h3>
+            <p>
+              With over a decade of experience in software engineering, I bring
+              a depth of technical knowledge and business acumen to every
+              project. My approach focuses on delivering value through:
+            </p>
+            <ul>
+              <li>Clean, maintainable code that scales with your business</li>
+              <li>Agile development methodology for faster time-to-market</li>
+              <li>
+                Security-first mindset throughout the development lifecycle
+              </li>
+              <li>Transparent communication and regular progress updates</li>
+              <li>Long-term support and continuous improvement</li>
+            </ul>
+          </div>
+
+          <div class="expertise-skills">
+            <div class="expertise-skill">
+              <h4>
+                <span>Full-Stack Development</span>
+                <span>95%</span>
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div class="expertise-skill">
+              <h4>
+                <span>Cloud Architecture</span>
+                <span>90%</span>
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div class="expertise-skill">
+              <h4>
+                <span>Database Design & Optimization</span>
+                <span>85%</span>
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <div class="expertise-skill">
+              <h4>
+                <span>DevOps & CI/CD</span>
+                <span>80%</span>
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="expertise-skill">
+              <h4>
+                <span>Security Implementation</span>
+                <span>88%</span>
+              </h4>
+              <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+      <div class="container">
+        <h2 class="section-title">My Development Process</h2>
+        <p class="section-subtitle">
+          A structured approach to delivering quality solutions on time and
+          within budget
+        </p>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Discovery</h3>
+            <p>
+              Understanding your business objectives, requirements, and
+              constraints to create a solid foundation.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Planning</h3>
+            <p>
+              Detailed technical planning, architecture design, and project
+              roadmap development.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Development</h3>
+            <p>
+              Iterative development with regular reviews and continuous
+              integration practices.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Testing</h3>
+            <p>
+              Comprehensive testing to ensure functionality, performance, and
+              security.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <h3>Deployment</h3>
+            <p>
+              Smooth deployment with minimal disruption to your business
+              operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Let's Discuss Your Project</h2>
+        <p class="section-subtitle">
+          Get in touch to schedule a free consultation and discover how I can
+          help your business
+        </p>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <p>
+              Ready to transform your business with custom software solutions?
+              I'm here to help you navigate the process from concept to delivery
+              and beyond.
+            </p>
+
+            <ul class="contact-methods">
+              <li>
+                <i>📧</i>
+                <span
+                  >&#104;&#101;&#108;&#108;&#111;&#64;&#121;&#117;&#114;&#105;&#102;&#97;&#114;&#105;&#110;&#97;&#46;&#99;&#111;&#109;</span
+                >
+              </li>
+              <li>
+                <i>📍</i>
+                <span>Barcelona, Spain</span>
+              </li>
+            </ul>
+          </div>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="user_name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="user_email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>© 2025 Yuri Farina. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
